@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -11,12 +12,14 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
+      <Suspense fallback={<>Please wait, thank you!</>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </>
   );
